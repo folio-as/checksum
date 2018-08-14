@@ -1,2 +1,2 @@
 # checksum
-Various checksum verifiers for Norwegian account numbers, ssns, etc.
+Checksum verifiers for Norwegian account/kid/organization numbers, ssns, etc.
