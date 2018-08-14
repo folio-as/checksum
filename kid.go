@@ -8,8 +8,8 @@
 
 package checksum
 
-// CheckKID verifies the MOD11 or Luhn checksum
-func CheckKID(value string) bool {
+// ValidateKID computes the MOD11 or Luhn checksums and returns true if either are correct
+func ValidateKID(value string) bool {
 	values := strToInts(value)
 	end := len(values) - 1
 

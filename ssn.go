@@ -16,8 +16,8 @@ func ssnSum(value []int) (sum int) {
 	return
 }
 
-// CheckNorwegianSSN verifies the MOD11 checksums
-func CheckNorwegianSSN(value string) bool {
+// ValidateNorwegianSSN computes MOD11 checksums and returns true if both are correct
+func ValidateNorwegianSSN(value string) bool {
 	values := strToInts(value)
 	end := len(values) - 1
 
