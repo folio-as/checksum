@@ -9,6 +9,9 @@ package checksum
 import "testing"
 
 func TestChecksum(t *testing.T) {
+	if Mod11("LOL   504") {
+		t.Errorf("failed")
+	}
 	if !Mod11("01010750160") {
 		t.Errorf("failed")
 	}

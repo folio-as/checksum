@@ -12,6 +12,9 @@ package checksum
 func strToInts(s string) []int {
 	a := make([]int, len(s))
 	for i, v := range s {
+		if v < '0' || v > '9' {
+			return nil
+		}
 		a[i] = int(v - '0')
 	}
 	return a
@@ -37,6 +40,9 @@ func mod11Sum(values []int) (sum int) {
 // Mod11 verifies the checksum
 func Mod11(value string) bool {
 	values := strToInts(value)
+	if values == nil {
+		return false
+	}
 	end := len(values) - 1
 
 	return mod11Check(mod11Sum(values[:end]), values[end])

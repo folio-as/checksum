@@ -30,6 +30,9 @@ func luhnCheck(values []int) bool {
 // Luhn verifies the checksum
 func Luhn(value string) bool {
 	values := strToInts(value)
+	if values == nil {
+		return false
+	}
 
 	return luhnCheck(values)
 }
