@@ -10,6 +10,9 @@
 package checksum
 
 func strToInts(s string) []int {
+	if len(s) == 0 {
+		return nil
+	}
 	a := make([]int, len(s))
 	for i, v := range s {
 		if v < '0' || v > '9' {
