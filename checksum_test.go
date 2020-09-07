@@ -1,7 +1,7 @@
 /*
  * Test checksum computations.
  *
- * Copyright (C) 2018 Folio AS.  All rights reserved.
+ * Copyright (C) 2020 Folio AS.  All rights reserved.
  */
 
 package checksum
@@ -9,6 +9,9 @@ package checksum
 import "testing"
 
 func TestChecksum(t *testing.T) {
+	if !Mod11("40036463-") {
+		t.Errorf("failed")
+	}
 	if Mod11("") {
 		t.Errorf("failed")
 	}
@@ -34,6 +37,9 @@ func TestChecksum(t *testing.T) {
 		t.Errorf("failed")
 	}
 	if Luhn("") {
+		t.Errorf("failed")
+	}
+	if Luhn("40036463-") {
 		t.Errorf("failed")
 	}
 	if !Luhn("79927398713") {

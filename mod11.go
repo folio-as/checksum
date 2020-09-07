@@ -4,7 +4,7 @@
  * Used for validation of social security numbers, account numbers, organization numbers
  * and KID numbers.
  *
- * Copyright (C) 2018 Folio AS.  All rights reserved.
+ * Copyright (C) 2020 Folio AS.  All rights reserved.
  */
 
 package checksum
@@ -26,7 +26,7 @@ func strToInts(s string) []int {
 func mod11Check(sum, checksum int) bool {
 	sum %= 11
 	if sum == 0 {
-		return 0 == checksum
+		sum = 11
 	}
 	return (11 - sum) == checksum
 }
@@ -42,11 +42,23 @@ func mod11Sum(values []int) (sum int) {
 
 // Mod11 verifies the checksum
 func Mod11(value string) bool {
-	values := strToInts(value)
+	end := len(value) - 1
+	if end < 0 {
+		return false
+	}
+
+	checksum := 10
+	v := value[end]
+	if v >= '0' && v <= '9' {
+		checksum = int(v - '0')
+	} else if v != '-' {
+		return false
+	}
+
+	values := strToInts(value[:end])
 	if values == nil {
 		return false
 	}
-	end := len(values) - 1
 
-	return mod11Check(mod11Sum(values[:end]), values[end])
+	return mod11Check(mod11Sum(values), checksum)
 }
