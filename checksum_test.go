@@ -12,6 +12,12 @@ func TestChecksum(t *testing.T) {
 	if !Mod11("40036463-") {
 		t.Errorf("failed")
 	}
+	if !ValidateKID("40036463-") {
+		t.Errorf("failed")
+	}
+	if Luhn("40036463-") {
+		t.Errorf("failed")
+	}
 	if Mod11("") {
 		t.Errorf("failed")
 	}
